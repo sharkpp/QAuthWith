@@ -53,7 +53,7 @@ Pane {
                 wrapMode: Text.WrapAnywhere
                 anchors.left: parent.left
                 anchors.right: parent.right
-                text: qsTr("Constructs a push button with an icon and a text, and a parent.\nNote that you can also pass a QPixmap object as an icon (thanks to the implicit type conversion provided by C++).")
+                text: method.description
             }
 
             GroupBox {

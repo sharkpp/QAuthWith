@@ -13,7 +13,7 @@ class Method
     QString m_description;
 
 public:
-    Method(const QString &name_);
+    Method(const QString &name_, const QString &description_);
 
     Q_PROPERTY(QString name        MEMBER m_name        CONSTANT)
     Q_PROPERTY(QString prototype   MEMBER m_prototype   CONSTANT)
