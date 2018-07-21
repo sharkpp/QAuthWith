@@ -75,10 +75,11 @@ ApplicationWindow {
 
             delegate: ItemDelegate {
                 width: parent.width
-                text: model.modelData.prototype
+                text: model.modelData.name
                 highlighted: ListView.isCurrentItem
                 onClicked: {
-                    listView.currentIndex = index
+                    listView.currentIndex   = index
+                    methodList.currentIndex = index
                     //stackView.push(model.source)
                     drawer.close()
                 }
