@@ -1,0 +1,24 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qtquickcontrols2.conf</file>
+	<file>ApiMethodItem.qml</file>
+	<file>main.qml</file>
+	<file>TestForm.ui.qml</file>
+        <file>icons/material-design-icons/24x24/play_circle.png</file>
+        <file>icons/material-design-icons/24x24/file_copy.png</file>
+        <file>icons/material-design-icons/24x24/menu.png</file>
+        <file>icons/material-design-icons/24x24/more_vert.png</file>
+        <file>icons/material-design-icons/24x24/pets.png</file>
+        <file>icons/material-design-icons/24x24@2/play_circle.png</file>
+        <file>icons/material-design-icons/24x24@2/file_copy.png</file>
+        <file>icons/material-design-icons/24x24@2/menu.png</file>
+        <file>icons/material-design-icons/24x24@2/more_vert.png</file>
+        <file>icons/material-design-icons/24x24@2/pets.png</file>
+        <file>icons/material-design-icons/24x24@3/play_circle.png</file>
+        <file>icons/material-design-icons/24x24@3/file_copy.png</file>
+        <file>icons/material-design-icons/24x24@3/menu.png</file>
+        <file>icons/material-design-icons/24x24@3/more_vert.png</file>
+        <file>icons/material-design-icons/24x24@3/pets.png</file>
+        <file>icons/material-design-icons/index.theme</file>
+    </qresource>
+</RCC>
