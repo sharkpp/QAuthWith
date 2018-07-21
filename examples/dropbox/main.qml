@@ -75,7 +75,7 @@ ApplicationWindow {
 
             delegate: ItemDelegate {
                 width: parent.width
-                text: model.modelData.title
+                text: model.modelData.prototype
                 highlighted: ListView.isCurrentItem
                 onClicked: {
                     listView.currentIndex = index
@@ -88,7 +88,7 @@ ApplicationWindow {
             //    ListElement { title: qsTr("Initalaize"); }
             //    ListElement { title: qsTr("Scroll"); }
             //}
-            model: apiMethodList
+            model: methodList.model
 
             ScrollIndicator.vertical: ScrollIndicator { }
         }
@@ -100,16 +100,13 @@ ApplicationWindow {
         //width: parent.width
 
         ListView {
-            id: apiMethodList
+            id: methodList
             anchors.fill: parent
-            //width: apiView.width
-            //spacing: 10
-            model: appData.getApiMethods()
-            delegate: My.ApiMethodItem { // ApiMethodItem.qml
+            model: appData.getMethods()
+            delegate: My.MethodView { // MethodView.qml
                 width: parent.width
-                method: model.modelData.title
-                exec: model.modelData
-                _listObject: apiMethodList
+                method: model.modelData
+                _listObject: methodList
             }
         }
 

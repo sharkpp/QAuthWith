@@ -17,12 +17,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 include(../../sources/authwith.pri)
 
 SOURCES += main.cpp \
-    apidefinition.cpp \
-    appdata.cpp
+    appdata.cpp \
+    method.cpp
 
 HEADERS += \
-    apidefinition.h \
-    appdata.h
+    appdata.h \
+    method.h
 
 RESOURCES += resources.qrc
 

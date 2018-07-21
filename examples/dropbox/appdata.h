@@ -4,20 +4,18 @@
 #include <QObject>
 #include <QList>
 
-class ApiDefinitionModel;
-
 class AppData
     : public QObject
 {
     Q_OBJECT
 
-    QList<QObject*> apiDefinitionLModel;
+    QList<QObject*> methodList;
 
 public:
 
     explicit AppData(QObject *parent = nullptr);
 
-    Q_INVOKABLE QList<QObject*> getApiMethods();
+    Q_INVOKABLE QList<QObject*> getMethods();
 
 signals:
 

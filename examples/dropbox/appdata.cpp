@@ -1,16 +1,16 @@
 #include "appdata.h"
-#include "apidefinition.h"
+#include "method.h"
 
 AppData::AppData(QObject *parent)
     : QObject(parent)
 {
-    apiDefinitionLModel.append(new ApiDefinition("てすとてすと"));
-    apiDefinitionLModel.append(new ApiDefinition("ほげほげ"));
+    methodList.append(new Method("てすとてすと"));
+    methodList.append(new Method("ほげほげ"));
 }
 
-QList<QObject*> AppData::getApiMethods()
+QList<QObject*> AppData::getMethods()
 {
-    return apiDefinitionLModel;
+    return methodList;
 }
 
 

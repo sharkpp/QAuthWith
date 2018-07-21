@@ -8,7 +8,6 @@ Pane {
 
     property variant _listObject: null
     property variant method: null
-    property variant exec: null
 
     Column {
         id: column
@@ -24,7 +23,7 @@ Pane {
                 anchors.right: parent.right
                 wrapMode: Text.WrapAnywhere
                 //text: qsTr("QPushButton::QPushButton(const QIcon &icon, const QString &text, QWidget *parent = nullptr)")
-                text: method
+                text: method.prototype
             }
 
             /*Label {
@@ -109,7 +108,7 @@ Pane {
                     ToolTip.text: qsTr("Try out code")
 
                     onClicked: {
-                        exec.exec()
+                        method.exec()
                     }
                 }
 
