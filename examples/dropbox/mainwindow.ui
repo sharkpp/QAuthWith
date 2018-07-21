@@ -29,6 +29,9 @@
      </widget>
     </item>
     <item>
+     <widget class="QTextEdit" name="textEdit"/>
+    </item>
+    <item>
      <widget class="QStackedWidget" name="methodProperty">
       <property name="currentIndex">
        <number>0</number>
