@@ -6,19 +6,25 @@ AppData::AppData(QObject *parent)
 {
     methodList.append(new Method(
                           "てすとてすと",
-                          "てすとのてすとがてすとで"
+                          "てすとのてすとがてすとで",
+                          MethodArgs()
+                          << new MethodArg(QMetaType::Int, "hoge", "hogehoge, hoge")
+                          << new MethodArg(QMetaType::Bool, "fuga", false, "fuga, fugafuga")
                           ));
     methodList.append(new Method(
                           "ほげほげ",
-                          "ほげほげでふふが"
+                          "ほげほげでふふが",
+                          MethodArgs()
                           ));
     methodList.append(new Method(
                           "でふふが",
-                          "ほげほげでふふが"
+                          "ほげほげでふふが",
+                          MethodArgs()
                           ));
     methodList.append(new Method(
                           "ふがふがふが",
-                          "ほげほげでふふが"
+                          "ほげほげでふふが",
+                          MethodArgs()
                           ));
 }
 

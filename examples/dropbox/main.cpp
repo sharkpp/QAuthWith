@@ -5,6 +5,7 @@
 #include <QQuickStyle>
 #include <QIcon>
 #include "appdata.h"
+#include "method.h"
 
 int main(int argc, char *argv[])
 {
@@ -32,7 +33,7 @@ int main(int argc, char *argv[])
 
     AppData data;
 
-    //qmlRegisterType<ApiReqest>("net.sharkpp.authwith", 1, 0, "ApiReqest");
+    //qmlRegisterType<MethodArgs>("net.sharkpp.authwith.method", 1, 0, "MethodArgs");
 
     QQmlApplicationEngine engine;
 
