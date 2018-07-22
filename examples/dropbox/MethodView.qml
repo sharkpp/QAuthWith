@@ -10,6 +10,7 @@ Pane {
 
     property variant _listObject: null
     property variant method: null
+    property var     argsBuff: ({})
 
     Component {
         id: typeInt
@@ -18,6 +19,10 @@ Pane {
             anchors.right: parent.right
             anchors.left: parent.left
             //placeholderText: qsTr("const QString &text")
+            signal valueChanged(var value);
+            onTextChanged: {
+                valueChanged(text)
+            }
         }
     }
 
@@ -28,6 +33,10 @@ Pane {
             anchors.left: parent.left
             //anchors.fill: parent
             checked: true
+            signal valueChanged(var value);
+            onCheckedChanged: {
+                valueChanged(checked)
+            }
         }
     }
 
@@ -226,6 +235,9 @@ Pane {
                                 }
 
                                 if (editor) {
+                                    editor.valueChanged.connect(function (value) {
+                                        argsBuff[modelData.name] = value
+                                    })
                                     valueEditorContainer.Layout.preferredHeight = editor.height
                                     //valueEditorContainer.Layout.preferredWidth  = editor.width
                                 }
@@ -259,7 +271,8 @@ Pane {
                     ToolTip.text: qsTr("Try out code")
 
                     onClicked: {
-                        method.exec()
+                        //console.log(JSON.stringify(argsBuff));
+                        method.exec(argsBuff)
                     }
                 }
 

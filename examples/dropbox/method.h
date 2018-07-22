@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QList>
+#include <QJSValue>
 
 class MethodArg
     : public QObject
@@ -37,15 +38,16 @@ class Method
     QString         m_name;
     QString         m_description;
     QList<QObject*> m_args;
+    std::function<void(const QJSValue&) > m_invoker;
 
 public:
-    Method(const QString &name_, const QString &description_, const MethodArgs& args_);
+    Method(const QString &name_, const QString &description_, const MethodArgs& args_, const std::function<void(const QJSValue&) >& invoker_);
 
     Q_PROPERTY(QString         prototype   MEMBER m_prototype   CONSTANT)
     Q_PROPERTY(QString         name        MEMBER m_name        CONSTANT)
     Q_PROPERTY(QString         description MEMBER m_description CONSTANT)
     Q_PROPERTY(QList<QObject*> args        MEMBER m_args        CONSTANT)
-    Q_INVOKABLE void   exec();
+    Q_INVOKABLE void           exec(const QJSValue& args);
 };
 
 #endif // METHOD_H
