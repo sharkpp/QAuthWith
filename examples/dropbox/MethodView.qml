@@ -27,6 +27,20 @@ Pane {
     }
 
     Component {
+        id: typeQString
+        TextField {
+            //anchors.fill: parent
+            anchors.right: parent.right
+            anchors.left: parent.left
+            //placeholderText: qsTr("const QString &text")
+            signal valueChanged(var value);
+            onTextChanged: {
+                valueChanged(text)
+            }
+        }
+    }
+
+    Component {
         id: typeBool
         Switch {
             anchors.right: parent.right
@@ -224,7 +238,13 @@ Pane {
                                 case QMetaType.Int:
                                     editor = typeInt.createObject(
                                                 valueEditorContainer, {
-                                                    placeholderText: modelData.prototype
+                                                    placeholderText: modelData.name
+                                                })
+                                    break;
+                                case QMetaType.QString:
+                                    editor = typeQString.createObject(
+                                                valueEditorContainer, {
+                                                    placeholderText: modelData.name
                                                 })
                                     break;
                                 case QMetaType.Bool:

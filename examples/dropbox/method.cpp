@@ -13,7 +13,7 @@ MethodArg::MethodArg(const QMetaType::Type type_, const QString &name_, const QS
     , m_name(name_)
     , m_description(description_)
 {
-    m_prototype = QString(QMetaType::typeName(type_)) + " " + m_name;
+    updateProtorype();
 }
 
 MethodArg::MethodArg(const QMetaType::Type type_, const QString &name_, bool required_, const QString &description_)
@@ -23,7 +23,12 @@ MethodArg::MethodArg(const QMetaType::Type type_, const QString &name_, bool req
     , m_name(name_)
     , m_description(description_)
 {
-    m_prototype = QString(QMetaType::typeName(type_)) + " " + m_name;
+    updateProtorype();
+}
+
+void MethodArg::updateProtorype()
+{
+    m_prototype = QString("const ") + QString(QMetaType::typeName(m_type)) + "& " + m_name;
 }
 
 //--------------------------------------------------------------------
@@ -41,7 +46,16 @@ Method::Method(
     , m_args(args_)
     , m_invoker(invoker_)
 {
-    m_prototype = m_name + "()";
+
+    QString argsText;
+    for (MethodArgs::iterator
+            ite = m_args.begin(),
+            last= m_args.end();
+         ite != last; ++ite) {
+        argsText += qobject_cast<MethodArg*>(*ite)->property("prototype").toString() + ", ";
+    }
+
+    m_prototype = m_name + "(" + argsText.left(argsText.size() - 2) + ");";
 }
 
 void Method::exec(const QJSValue& args)

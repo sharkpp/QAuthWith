@@ -25,6 +25,9 @@ public:
     Q_PROPERTY(QString required    MEMBER m_required    CONSTANT)
     Q_PROPERTY(QString name        MEMBER m_name        CONSTANT)
     Q_PROPERTY(QString description MEMBER m_description CONSTANT)
+
+private:
+    void updateProtorype();
 };
 
 typedef QList<QObject*> MethodArgs;
