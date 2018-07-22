@@ -60,12 +60,5 @@ Method::Method(
 
 void Method::exec(const QJSValue& args)
 {
-    //qDebug() << m_prototype << args.hasProperty("hoge") << args.hasProperty("fuga");
-    qDebug() << m_prototype << args.property("hoge").toInt() << args.property("fuga").toBool();
-    //QJSValueIterator it(args);
-    //while (it.hasNext()) {
-    //    it.next();
-    //    qDebug() << it.name() << ": " << it.value().toString();
-    //}
     m_invoker(args);
 }

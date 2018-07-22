@@ -85,10 +85,6 @@ ApplicationWindow {
                 }
             }
 
-            //model: ListModel {
-            //    ListElement { title: qsTr("Initalaize"); }
-            //    ListElement { title: qsTr("Scroll"); }
-            //}
             model: methodList.model
 
             ScrollIndicator.vertical: ScrollIndicator { }
