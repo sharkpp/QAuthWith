@@ -11,7 +11,7 @@ ApplicationWindow {
     width: 640-100
     height: 480
     visible: true
-    title: qsTr("AuthWith - dropbox")
+    title: "AuthWith - " + appData.appName
 
     header: ToolBar {
         Material.foreground: "white"

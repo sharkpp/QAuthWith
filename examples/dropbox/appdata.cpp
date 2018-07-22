@@ -4,6 +4,7 @@
 
 AppData::AppData(QObject *parent)
     : QObject(parent)
+    , m_appName("dropbox")
 {
     // void setAppKeyAndSecret(const QString& appKey, const QString& appSecret);
     methodList.append(
