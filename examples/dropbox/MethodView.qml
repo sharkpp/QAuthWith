@@ -183,7 +183,7 @@ Pane {
                         Label {
                             Layout.row: 1 + index
                             Layout.column: 3
-                            Layout.fillWidth: true
+                            //Layout.fillWidth: true
                             Layout.fillHeight: true
                             Layout.alignment: Qt.AlignVCenter
                             text: modelData.description
