@@ -1,6 +1,7 @@
 import QtQuick 2.9
 import QtQuick.Controls 2.2
 import QtQuick.Layouts 1.3
+import QtQuick.Dialogs 1.0
 //import net.sharkpp.authwith.method 1.0
 import "qmetatype.js" as QMetaType
 
@@ -46,6 +47,32 @@ Pane {
             signal valueChanged(var value);
             onCheckedChanged: {
                 valueChanged(checked)
+            }
+        }
+    }
+
+    Component {
+        id: typeQByteArray
+        Button {
+            anchors.right: parent.right
+            anchors.left: parent.left
+            anchors.margins: 4
+            signal valueChanged(var value);
+            function onFileDialogAccepted() {
+                //console.log("file selected",fileDialog.fileUrls);
+                onFileDialogRejected()
+                valueChanged(fileDialog.fileUrls);
+            }
+            function onFileDialogRejected() {
+                fvalueChanged("");
+                ileDialog.onAccepted.disconnect(onFileDialogAccepted)
+                fileDialog.onRejected.disconnect(onFileDialogRejected)
+            }
+
+            onClicked: {
+                fileDialog.onAccepted.connect(onFileDialogAccepted)
+                fileDialog.onRejected.connect(onFileDialogRejected)
+                fileDialog.visible = true;
             }
         }
     }
@@ -159,6 +186,12 @@ Pane {
                                                     placeholderText: modelData.name
                                                 })
                                     break;
+                                case QMetaType.QByteArray:
+                                    editor = typeQByteArray.createObject(
+                                                valueEditorContainer, {
+                                                    text: modelData.name + " ..."
+                                                })
+                                    break;
                                 case QMetaType.Bool:
                                     editor = typeBool.createObject(valueEditorContainer)
                                     break;
@@ -217,6 +250,12 @@ Pane {
             }
         }
 
+    }
+
+    FileDialog {
+        id: fileDialog
+        title: qsTr("Please choose a file")
+        folder: shortcuts.home
     }
 }
 

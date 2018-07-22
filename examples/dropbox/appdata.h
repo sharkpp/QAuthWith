@@ -4,6 +4,8 @@
 #include <QObject>
 #include <QList>
 
+class Dropbox;
+
 class AppData
     : public QObject
 {
@@ -12,6 +14,8 @@ class AppData
     QString m_appName;
 
     QList<QObject*> methodList;
+
+    Dropbox* m_dropbox;
 
 public:
 

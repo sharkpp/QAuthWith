@@ -4,7 +4,6 @@ import QtQuick.Controls 2.2
 import QtQuick.Controls.Material 2.2
 import QtQuick.Controls.Universal 2.2
 import Qt.labs.settings 1.0
-import "." as My
 
 ApplicationWindow {
     id: window
@@ -100,7 +99,7 @@ ApplicationWindow {
             id: methodList
             anchors.fill: parent
             model: appData.getMethods()
-            delegate: My.MethodView { // MethodView.qml
+            delegate: MethodView { // MethodView.qml
                 width: parent.width
                 method: model.modelData
                 _listObject: methodList
