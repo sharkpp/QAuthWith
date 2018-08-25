@@ -98,11 +98,59 @@ ApplicationWindow {
         ListView {
             id: methodList
             anchors.fill: parent
-            model: appData.getMethods()
-            delegate: MethodView { // MethodView.qml
+            model: appData.definitions
+            /*delegate: MethodView { // MethodView.qml
                 width: parent.width
                 method: model.modelData
                 _listObject: methodList
+            }*/
+            /*delegate: Item {
+                id: listContainer
+                anchors.fill: parent
+                //Layout.row: 1 + index
+                //Layout.column: 2
+                //Layout.fillWidth: true
+                //Layout.fillHeight: true
+                //Layout.alignment: Qt.AlignVCenter
+                Component.onCompleted: {
+                    var MethodView_ = Qt.createComponent("MethodView.qml");
+                    MethodView_.createObject(listContainer, {
+                        "anchors.fill": parent,
+                        width: parent.width,
+                        method: model.modelData,
+                        _listObject: methodList,
+                    });
+                }
+            }*/
+            delegate: Component {
+                Loader {
+                    id: listContainer
+                    height: childrenRect.height
+                    width: parent.width
+                    source: switch(model.modelData.definitionType) {
+                        case "method":
+                            var MethodView_ = Qt.createComponent("MethodView.qml");
+                            MethodView_.createObject(listContainer, {
+                                //"anchors.fill": parent,
+                                width: parent.width,
+                                method: model.modelData,
+                                //_listObject: methodList,
+                            });
+                            return MethodView_;
+                        case "signal":
+                            var SignalView_ = Qt.createComponent("SignalView.qml");
+                            SignalView_.createObject(listContainer, {
+                                //"anchors.fill": parent,
+                                width: parent.width,
+                                signal_: model.modelData,
+                                //_listObject: methodList,
+                            });
+                            return SignalView_;
+                        default:
+                            console.log("**",model.modelData.definitionType);
+                            return Item;
+                    }
+                }
             }
         }
 

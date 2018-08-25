@@ -18,11 +18,15 @@ include(../../sources/authwith.pri)
 
 SOURCES += main.cpp \
     appdata.cpp \
-    method.cpp
+    method.cpp \
+    signal.cpp \
+    arguments.cpp
 
 HEADERS += \
     appdata.h \
-    method.h
+    method.h \
+    signal.h \
+    arguments.h
 
 RESOURCES += resources.qrc
 

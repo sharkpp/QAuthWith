@@ -21,5 +21,6 @@
         <file>icons/material-design-icons/24x24@3/pets.png</file>
         <file>icons/material-design-icons/index.theme</file>
         <file>qmetatype.js</file>
+        <file>SignalView.qml</file>
     </qresource>
 </RCC>

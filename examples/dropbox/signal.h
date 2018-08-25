@@ -1,13 +1,13 @@
-#ifndef METHOD_H
-#define METHOD_H
+#ifndef SIGNAL_H
+#define SIGNAL_H
 
 #include <QObject>
-#include <QJSValue>
+#include <QVariant>
 #include <functional>
 #include "arguments.h" // Arguments, Argument
 
-class Method
-    : public QObject
+class Signal
+        : public QObject
 {
     Q_OBJECT
 
@@ -15,10 +15,11 @@ class Method
     QString         m_name;
     QString         m_description;
     Arguments       m_args;
-    std::function<void(const QJSValue&) > m_invoker;
+    QList<QObject*> m_argsItem;
 
 public:
-    Method(const QString &name_, const QString &description_, const Arguments& args_, const std::function<void(const QJSValue&) >& invoker_);
+    Signal(const QString &name_, const QString &description_, const Arguments& args_,
+           const std::function<void(const std::function<void(const QVariantList&) >&) >& initializer);
 
     Q_PROPERTY(QString         definitionType READ   getDefinitionType CONSTANT)
 
@@ -26,10 +27,10 @@ public:
     Q_PROPERTY(QString         name           MEMBER m_name            CONSTANT)
     Q_PROPERTY(QString         description    MEMBER m_description     CONSTANT)
     Q_PROPERTY(QList<QObject*> args           MEMBER m_args            CONSTANT)
-    Q_INVOKABLE void           exec(const QJSValue& args);
+    Q_INVOKABLE void           bind(int argIndex, QObject* object);
 
 protected:
-    QString getDefinitionType() const { return "method"; }
+    QString getDefinitionType() const { return "signal"; }
 };
 
-#endif // METHOD_H
+#endif // SIGNAL_H

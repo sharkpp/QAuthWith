@@ -1,20 +1,18 @@
-#include "method.h"
+#include "signal.h"
 #include <QDebug>
-//#include <QJSValueIterator>
 
 //--------------------------------------------------------------------
 // Method class
 //--------------------------------------------------------------------
 
-Method::Method(const QString &name_,
+Signal::Signal(const QString &name_,
         const QString &description_,
         const Arguments &args_,
-        const std::function<void(const QJSValue&) >& invoker_
+        const std::function<void(const std::function<void(const QVariantList&) >&) >& initializer
   ) : QObject()
     , m_name(name_)
     , m_description(description_)
     , m_args(args_)
-    , m_invoker(invoker_)
 {
 
     QString argsText;
@@ -23,12 +21,24 @@ Method::Method(const QString &name_,
             last= m_args.end();
          ite != last; ++ite) {
         argsText += qobject_cast<Argument*>(*ite)->property("prototype").toString() + ", ";
+        //
+        m_argsItem.append(nullptr);
     }
 
-    m_prototype = m_name + "(" + argsText.left(argsText.size() - 2) + ");";
+    m_prototype = "void " + m_name + "(" + argsText.left(argsText.size() - 2) + ");";
+
+    initializer([&](const QVariantList& args) {
+        qDebug() << args;
+    });
 }
 
-void Method::exec(const QJSValue& args)
+void Signal::bind(int argIndex, QObject* object)
 {
-    m_invoker(args);
+    qDebug() << "Signal::bind" << argIndex << object;
+
+    m_argsItem.replace(argIndex, object);
+
+    //object->setProperty("text", "aaaa");
 }
+
+

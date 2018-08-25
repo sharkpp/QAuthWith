@@ -82,7 +82,7 @@ Pane {
         anchors.fill: parent
         spacing: 4
 
-        // function name
+        // function prototype
         Label {
             anchors.left: parent.left
             anchors.right: parent.right

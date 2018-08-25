@@ -13,7 +13,7 @@ class AppData
 
     QString m_appName;
 
-    QList<QObject*> methodList;
+    QList<QObject*> m_definitions; // definitions of methods/signals
 
     Dropbox* m_dropbox;
 
@@ -23,7 +23,7 @@ public:
 
     Q_PROPERTY(QString appName   MEMBER m_appName   CONSTANT)
 
-    Q_INVOKABLE QList<QObject*> getMethods();
+    Q_PROPERTY(QList<QObject*> definitions   MEMBER m_definitions   CONSTANT)
 
 signals:
 
