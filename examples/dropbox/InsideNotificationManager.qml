@@ -2,9 +2,6 @@ import QtQuick 2.9
 
 Item {
     anchors.fill: parent
-    //activeFocusOnTab: false
-    //focus: false
-    //clip: true
 
     Component {
         id: singleShot
@@ -46,7 +43,6 @@ Item {
                     text: message
                 }
             }
-
         }
     }
 
@@ -56,39 +52,8 @@ Item {
         spacing: 4
         model: model
         delegate: frame
-        //activeFocusOnTab: false
-        //focus: false
         enabled: false
     }
-
-
-    /*MouseArea {
-        anchors.fill: parent
-        enabled: false
-        propagateComposedEvents: true
-        hoverEnabled: false
-        onClicked: mouse.accepted = false
-        onReleased: mouse.accepted = false
-        onEntered: mouse.accepted = false
-        onExited:  mouse.accepted = false
-        onWheel:  mouse.accepted = false
-
-    }*/
-/*
-    MouseArea {
-        anchors.fill: parent
-        propagateComposedEvents: false
-        onWheel: {
-            console.log('ListView MouseArea onWheel');
-            wheel.accepted = false;
-        }
-        onClicked: {
-            console.log('ListView MouseArea onClicked');
-            mouse.accepted = false;
-            //parent.parent.parent.clicked();
-        }
-
-    }*/
 
     function append(message, title) {
         model.insert(0, {

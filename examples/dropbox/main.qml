@@ -93,35 +93,12 @@ ApplicationWindow {
     ScrollView {
         id: apiView
         anchors.fill: parent
-        //width: parent.width
 
         ListView {
             id: methodList
             anchors.fill: parent
             model: appData.definitions
-            /*delegate: MethodView { // MethodView.qml
-                width: parent.width
-                method: model.modelData
-                _listObject: methodList
-            }*/
-            /*delegate: Item {
-                id: listContainer
-                anchors.fill: parent
-                //Layout.row: 1 + index
-                //Layout.column: 2
-                //Layout.fillWidth: true
-                //Layout.fillHeight: true
-                //Layout.alignment: Qt.AlignVCenter
-                Component.onCompleted: {
-                    var MethodView_ = Qt.createComponent("MethodView.qml");
-                    MethodView_.createObject(listContainer, {
-                        "anchors.fill": parent,
-                        width: parent.width,
-                        method: model.modelData,
-                        _listObject: methodList,
-                    });
-                }
-            }*/
+
             delegate: Component {
                 Loader {
                     id: listContainer
@@ -153,18 +130,6 @@ ApplicationWindow {
                 }
             }
         }
-
-
-        /*Label {
-            id: titleLabel2
-            text: "Gallery"
-            font.pixelSize: 20
-            elide: Label.ElideRight
-            horizontalAlignment: Qt.AlignHCenter
-            verticalAlignment: Qt.AlignVCenter
-            Layout.fillWidth: true
-        }*/
-
     }
 
     Dialog {
