@@ -77,7 +77,7 @@ Item {
                     action: function() {
                             model.remove(model.count-1);
                         },
-                    interval: 1000 + 100
+                    interval: 3000
                 })
         });
     }
