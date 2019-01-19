@@ -15,6 +15,7 @@ Signal::Signal(const QString &name_,
     , m_args(args_)
 {
 
+    // build displayed prototype
     QString argsText;
     for (Arguments::iterator
             ite = m_args.begin(),
@@ -27,9 +28,11 @@ Signal::Signal(const QString &name_,
 
     m_prototype = "void " + m_name + "(" + argsText.left(argsText.size() - 2) + ");";
 
-    initializer([&](const QVariantList& args) {
+    // register callback
+    m_callback = [&](const QVariantList& args) {
         qDebug() << args;
-    });
+    };
+    initializer(m_callback);
 }
 
 void Signal::bind(int argIndex, QObject* object)

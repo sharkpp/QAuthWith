@@ -16,6 +16,7 @@ class Signal
     QString         m_description;
     Arguments       m_args;
     QList<QObject*> m_argsItem;
+    std::function<void(const QVariantList&) > m_callback;
 
 public:
     Signal(const QString &name_, const QString &description_, const Arguments& args_,
