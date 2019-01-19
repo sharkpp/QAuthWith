@@ -22,5 +22,6 @@
         <file>icons/material-design-icons/index.theme</file>
         <file>qmetatype.js</file>
         <file>SignalView.qml</file>
+        <file>InsideNotificationManager.qml</file>
     </qresource>
 </RCC>

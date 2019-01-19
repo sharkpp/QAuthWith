@@ -199,4 +199,14 @@ ApplicationWindow {
         }
     }
 
+    Timer {
+        interval: 1000;
+        running: true;
+        repeat: true
+        onTriggered: notify.append("test test "+(new Date()).toString(), "title")
+    }
+
+    InsideNotificationManager {
+        id: notify
+    }
 }
