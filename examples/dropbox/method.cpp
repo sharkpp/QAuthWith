@@ -17,6 +17,7 @@ Method::Method(const QString &name_,
     , m_invoker(invoker_)
 {
 
+    // build displayed prototype
     QString argsText;
     for (Arguments::iterator
             ite = m_args.begin(),
