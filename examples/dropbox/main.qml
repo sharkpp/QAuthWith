@@ -112,15 +112,17 @@ ApplicationWindow {
                                 width: parent.width,
                                 method: model.modelData,
                                 //_listObject: methodList,
+                                _notify: notify
                             });
                             return MethodView_;
                         case "signal":
                             var SignalView_ = Qt.createComponent("SignalView.qml");
                             SignalView_.createObject(listContainer, {
-                                //"anchors.fill": parent,
-                                width: parent.width,
-                                signal_: model.modelData,
-                                //_listObject: methodList,
+                                 //"anchors.fill": parent,
+                                 width: parent.width,
+                                 signal_: model.modelData,
+                                 //_listObject: methodList,
+                                 _notify: notify
                             });
                             return SignalView_;
                         default:
@@ -164,12 +166,12 @@ ApplicationWindow {
         }
     }
 
-    Timer {
+    /*Timer {
         interval: 1000;
         running: true;
         repeat: true
         onTriggered: notify.append("test test "+(new Date()).toString(), "title")
-    }
+    }*/
 
     InsideNotificationManager {
         id: notify

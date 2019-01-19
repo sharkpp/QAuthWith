@@ -9,6 +9,7 @@ Pane {
     id: pane
 
     property variant _listObject: null
+    property variant _notify: null
     property variant signal_: null
 
     Component {
@@ -188,6 +189,10 @@ Pane {
 
                 ToolTip.visible: hovered
                 ToolTip.text: qsTr("Copy code")
+
+                onClicked: {
+                    _notify.append(qsTr("Copied to clipboard"));
+                }
             }
 
         }

@@ -36,12 +36,25 @@ Item {
                     color: "#000"
                     font.bold: true
                     text: title
+                    visible: !!title
                 }
                 Text {
                     padding: 4
                     color: "#000"
                     text: message
                 }
+            }
+
+            MouseArea {
+                anchors.fill: parent
+                //propagateComposedEvents: false
+                onClicked: {
+                    // @todo クリックで通知を消す
+                    console.log('#frame MouseArea onClicked');
+                    //mouse.accepted = false;
+                    //parent.parent.parent.clicked();
+                }
+
             }
         }
     }
@@ -55,9 +68,10 @@ Item {
         interactive: false
     }
 
+    // 通知を追加する
     function append(message, title) {
         model.insert(0, {
-            title: title,
+            title: title || "",
             message: message,
             t: singleShot.createObject(this, {
                     action: function() {

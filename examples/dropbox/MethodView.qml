@@ -8,6 +8,7 @@ import "qmetatype.js" as QMetaType
 Pane {
     id: pane
 
+    property variant _notify: null
     property variant _listObject: null
     property variant method: null
     property var     argsBuff: ({})
@@ -247,6 +248,10 @@ Pane {
 
                 ToolTip.visible: hovered
                 ToolTip.text: qsTr("Copy code")
+
+                onClicked: {
+                    _notify.append(qsTr("Copied to clipboard"));
+                }
             }
 
         }
