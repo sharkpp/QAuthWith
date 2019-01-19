@@ -1,4 +1,4 @@
-# Popover - QDialog base balloon shape widget
+# AuthWith - Qt Network Authorization wrapper class
 
 `QDialog` ベースの吹き出し付きポップアップ
 
@@ -16,7 +16,7 @@
 ### 1)ソースを取得
 
 ```console
-# git submodule add git@github.com:sharkpp/qtpopover.git libs/qtpopover
+# git submodule add git@github.com:sharkpp/qtauthwith.git libs/qtauthwith
 # git submodule update
 ```
 
@@ -32,7 +32,7 @@
 + # You can also select to disable deprecated APIs only up to a certain version of Qt.
 + #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 +
-+ include(./libs/qtpopover/sources/popover.pri)
++ include(./libs/qtauthwith/sources/authwith.pri)
 +
 + SOURCES += \
 +         main.cpp \
@@ -43,7 +43,7 @@
 
 #### 2b.1)ライブラリをビルド
 
-`./libs/qtpopover/popover.pro` を `Qt Creator` で開きビルドする。
+`./libs/qtauthwith/authwith.pro` を `Qt Creator` で開きビルドする。
 
 #### 2b.2)プロジェクトファイル(`.pro`)を変更
 
@@ -55,8 +55,8 @@
 + # You can also select to disable deprecated APIs only up to a certain version of Qt.
 + #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 +
-+ POPOVER_USE_STATIC_LIB=1
-+ include(./libs/qtpopover/sources/popover.pri)
++ AUTHWITH_USE_STATIC_LIB=1
++ include(./libs/qtauthwith/sources/authwith.pri)
 +
 + SOURCES += \
 +         main.cpp \
@@ -74,7 +74,7 @@
   
   TaskTrayPopup::TaskTrayPopup(QWidget *parent)
 -     : QDialog(parent)
-+     : Popover(parent)
++     : AuthWith(parent)
       , ui(new Ui::TaskTrayPopup)
   {
       ui->setupUi(this);
@@ -88,7 +88,7 @@
   #ifndef TASKTRAYPOPUP_H
   #define TASKTRAYPOPUP_H
   
-+ #include "popover.h"
++ #include "authwith.h"
   
   namespace Ui {
   class TaskTrayPopup;
@@ -96,7 +96,6 @@
   
   class TaskTrayPopup
 -         : public QDialog
-+         : public Popover
   {
       Q_OBJECT
   
@@ -112,7 +111,7 @@
 
 |定義|概要|
 |-|-|
-|`Popover::Popover(QWidget *parent = 0)`|コンストラクタ|
+|`AythWith::AythWith(QWidget *parent = 0)`|コンストラクタ|
 
 ## 未実装
 
