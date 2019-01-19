@@ -52,7 +52,7 @@ Item {
         spacing: 4
         model: model
         delegate: frame
-        enabled: false
+        interactive: false
     }
 
     function append(message, title) {
