@@ -26,21 +26,28 @@ Item {
             width: Math.max(200, contactInfo.width)
             height: contactInfo.height
             anchors.right: parent.right
-            color: "#ccc"
-            radius: 8
+            color: "transparent"
+
+            Rectangle {
+                anchors.fill: parent
+                color: "#666"
+                opacity: 0.9
+                radius: 4
+            }
+
             Column {
                 id: contactInfo
                 padding: 4
                 Text {
                     padding: 4
-                    color: "#000"
+                    color: "#FFF"
                     font.bold: true
                     text: title
                     visible: !!title
                 }
                 Text {
                     padding: 4
-                    color: "#000"
+                    color: "#FFF"
                     text: message
                 }
             }
